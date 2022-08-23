@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B7T-hr-AMq">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="storytime.ttf">
+            <string>StorytimeRegular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Vzh-JV-8DK">
+            <objects>
+                <viewController id="B7T-hr-AMq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3C8-Bw-I1U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mixtape_loader_frame1" translatesAutoresizingMaskIntoConstraints="NO" id="YwH-Bt-Qrv">
+                                <rect key="frame" x="20" y="266.5" width="374" height="363"/>
+                            </imageView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-hf-Kih">
+                                <rect key="frame" x="20" y="162" width="374" height="94.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Mixtape" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAH-jq-J4r">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="59.5"/>
+                                        <fontDescription key="fontDescription" name="StorytimeRegular" family="Storytime" pointSize="60"/>
+                                        <color key="textColor" name="color_darkPurple"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Share your favorite songs with friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDk-rS-yUh">
+                                        <rect key="frame" x="0.0" y="69.5" width="374" height="25"/>
+                                        <fontDescription key="fontDescription" name="StorytimeRegular" family="Storytime" pointSize="25"/>
+                                        <color key="textColor" name="color_darkPurple"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HuH-gr-yU9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YwH-Bt-Qrv" firstAttribute="leading" secondItem="HuH-gr-yU9" secondAttribute="leading" constant="20" id="2YY-rT-v15"/>
+                            <constraint firstItem="HuH-gr-yU9" firstAttribute="trailing" secondItem="VQO-hf-Kih" secondAttribute="trailing" constant="20" id="8II-fe-1CW"/>
+                            <constraint firstItem="HuH-gr-yU9" firstAttribute="trailing" secondItem="YwH-Bt-Qrv" secondAttribute="trailing" constant="20" id="gGa-LB-os3"/>
+                            <constraint firstItem="YwH-Bt-Qrv" firstAttribute="centerY" secondItem="3C8-Bw-I1U" secondAttribute="centerY" id="kIZ-gl-zCG"/>
+                            <constraint firstItem="VQO-hf-Kih" firstAttribute="leading" secondItem="HuH-gr-yU9" secondAttribute="leading" constant="20" id="ntA-uF-fdZ"/>
+                            <constraint firstItem="YwH-Bt-Qrv" firstAttribute="centerX" secondItem="3C8-Bw-I1U" secondAttribute="centerX" id="ooq-wm-d0G"/>
+                            <constraint firstItem="YwH-Bt-Qrv" firstAttribute="top" secondItem="VQO-hf-Kih" secondAttribute="bottom" constant="10" id="zwk-Rh-Tgf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ia6-P0-arK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-310" y="54"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="mixtape_loader_frame1" width="582" height="363"/>
+        <namedColor name="color_darkPurple">
+            <color red="0.45490196078431372" green="0.20392156862745098" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
