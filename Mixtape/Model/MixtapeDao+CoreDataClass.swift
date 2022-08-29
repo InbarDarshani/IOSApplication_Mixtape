@@ -11,7 +11,7 @@ public class MixtapeDao: NSManagedObject {
         return appDelegate.persistentContainer.viewContext
     }()
     
-    /*______________________________________ GET ______________________________________*/
+    /*-------------------------------------- GET --------------------------------------*/
     
     static func getOne(byId:String)->Mixtape?{
         guard let context = context else { return nil }
@@ -48,7 +48,7 @@ public class MixtapeDao: NSManagedObject {
         return self.getAll().filter({ $0.userId == byUserId })
     }
     
-    /*______________________________________ INSERT ______________________________________*/
+    /*-------------------------------------- INSERT --------------------------------------*/
     
     static func insert(mixtape:Mixtape){
         if (mixtape.deleted) { return }
@@ -80,7 +80,7 @@ public class MixtapeDao: NSManagedObject {
         self.setLocalLastUpdated(date: lastUpdate)
     }
     
-    /*______________________________________ DELETE ______________________________________*/
+    /*-------------------------------------- DELETE --------------------------------------*/
     
     static func delete(mixtape:Mixtape){
         guard let context = context else { return }
@@ -98,7 +98,7 @@ public class MixtapeDao: NSManagedObject {
         }catch let error as NSError{ NSLog("TAG MixtapeDao - delete error \(error) \(error.userInfo)") }
     }
     
-    /*______________________________________ LAST UPDATE ______________________________________*/
+    /*-------------------------------------- LAST UPDATE --------------------------------------*/
     
     static func getLocalLastUpdated() -> Int64{
         return Int64(UserDefaults.standard.integer(forKey: "MIXTAPEDAO_LAST_UPDATE"))

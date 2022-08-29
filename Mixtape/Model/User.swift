@@ -13,30 +13,35 @@ class User{
         
     init(){}
     
+    init(userId: String, email: String, displayName: String, imageUrl: String = "", timeModified: Int64 = 0, timeCreated: Int64 = 0){
+        self.userId = userId
+        self.email = email
+        self.displayName = displayName
+        self.imageUrl = imageUrl
+        self.timeModified = timeModified
+        self.timeCreated = timeCreated
+    }
+    
     init(user:UserDao){
-        userId = user.userId
-        email = user.email
-        displayName = user.displayName
-        imageUrl = user.imageUrl
-        timeModified = user.timeModified
-        timeCreated = user.timeCreated
+        self.userId = user.userId
+        self.email = user.email
+        self.displayName = user.displayName
+        self.imageUrl = user.imageUrl
+        self.timeModified = user.timeModified
+        self.timeCreated = user.timeCreated
     }
 }
     
 extension User{
     static func fromJson(json:[String:Any])->User{
-        let m = User()
-        m.userId = json["userId"] as? String
-        m.email = json["email"] as? String
-        m.displayName = json["displayName"] as? String
-        m.imageUrl = json["image"] as? String
-        if let tm = json["timeModified"] as? Timestamp{
-            m.timeModified = tm.seconds
-        }
-        if let tc = json["timeCreated"] as? Timestamp{
-            m.timeCreated = tc.seconds
-        }
-        return m
+        let u = User()
+        u.userId = json["userId"] as? String
+        u.email = json["email"] as? String
+        u.displayName = json["displayName"] as? String
+        u.imageUrl = json["image"] as? String
+        if let tm = json["timeModified"] as? Timestamp{ u.timeModified = tm.seconds }
+        if let tc = json["timeCreated"] as? Timestamp{ u.timeCreated = tc.seconds }
+        return u
     }
     
     func toJson()->[String:Any]{

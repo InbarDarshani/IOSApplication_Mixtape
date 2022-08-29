@@ -12,89 +12,55 @@ class ModelFirebase{
     
     init(){}
     
-    /*______________________________________ AUTHENTICATION ______________________________________*/
-    
-    func isSignedIn()->Bool{ print("CURRENT USER \(mAuth.currentUser?.email)"); return mAuth.currentUser != nil; }
+    //MARK: -------------------------------------- AUTHENTICATION --------------------------------------
+
+    func isSignedIn()->Bool{
+        NSLog("TAG Firebase - current user is \(mAuth.currentUser?.email ?? "??")")
+        return mAuth.currentUser != nil
+    }
     
     func signIn(fullName:String, email:String, password: String, completion:@escaping (_ user:User?, _ error:String?)->Void){
         mAuth.signIn(withEmail: email, password: password) { authResult, error in
             guard let firebaseUser = authResult?.user, error == nil else {
-                NSLog("TAG Firebase - sign-in failed")
-                
-#warning ("TODO:")
-                print(error!.localizedDescription)
+                NSLog("TAG Firebase - sign-in failed \(email)")
+#warning ("TODO?: Setup auth errors")
                 completion(nil, error!.localizedDescription)
                 return
             }
-            NSLog("TAG Firebase - sign-in success")
-            
+            NSLog("TAG Firebase - sign-in success \(email)")
+            //Get existing user from firebase db and return to caller
             self.getUserById(userId: firebaseUser.uid){ user in completion(user, nil) }
         }
     }
     
     func signUp(fullName:String, email:String, password: String, completion:@escaping (_ user:User?, _ error:String?)->Void){
         mAuth.createUser(withEmail: email, password: password) { authResult, error in
-            
             guard let firebaseUser = authResult?.user, error == nil else {
-                NSLog("TAG Firebase - sign-up failed")
-                
-#warning ("TODO: ")
-                print(error!.localizedDescription)
+                NSLog("TAG Firebase - sign-up failed \(email)")
+#warning ("TODO?: Setup auth errors")
                 completion(nil, error!.localizedDescription)
                 return
             }
-            NSLog("TAG Firebase - sign-up success")
-            
-            let u = User()
-            u.userId = firebaseUser.uid
-            u.displayName = fullName
-            u.email = email
-            u.imageUrl = ""
-            
+            NSLog("TAG Firebase - sign-up success \(email)")
+            //Create new user in firebase db and return to caller
+            let u = User(userId: firebaseUser.uid, email: email, displayName: fullName)
             self.addUser(user: u){ newUserId in
                 u.userId = newUserId
                 completion(u, nil)
             }
-            
         }
     }
-    
-    //    func signInsignUpError(error:String) {
-    //           Log.d("TAG", "Firebase - failed to sign-in " + task.getException());
-    //
-    //           //Get error
-    //           Exception e = task.getException();
-    //           if (e instanceof FirebaseAuthInvalidCredentialsException) {
-    //               Model.instance.authError = "Invalid password";
-    //           } else if (e instanceof FirebaseAuthInvalidUserException) {
-    //               String errorCode = ((FirebaseAuthInvalidUserException) e).getErrorCode();
-    //               switch (errorCode) {
-    //                   case "ERROR_USER_NOT_FOUND":
-    //                       Model.instance.authError = "No matching account found";
-    //                       break;
-    //                   case "ERROR_USER_DISABLED":
-    //                       Model.instance.authError = "User account has been disabled";
-    //                       break;
-    //                   case "ERROR_EMAIL_ALREADY_IN_USE":
-    //                       Model.instance.authError = "Email is already in use";
-    //                       break;
-    //                   default:
-    //                       Model.instance.authError = e.getMessage();
-    //                       break;
-    //               }
-    //           }
-    //       }
     
     func signOut(){
         do {
             try mAuth.signOut()
-        } catch let signOutError as NSError {
-            NSLog("Firebase - sign-out faild \(signOutError)")
+            NSLog("Firebase - sign-out success")
         }
+        catch let signOutError as NSError { NSLog("Firebase - sign-out failed \(signOutError)") }
     }
     
-    /*__________________________________________ STORAGE _________________________________________*/
-    
+    //MARK: ---------------------------------------- STORAGE ----------------------------------------
+
     func uploadImage(imageName:String, folder:String, image:UIImage, completion: @escaping (_ url:String)->Void){
         let storageRef = storage.reference()
         let imageRef = storageRef.child(folder + "/" + imageName)
@@ -109,8 +75,8 @@ class ModelFirebase{
         }
     }
     
-    /*___________________________________________ DATA ___________________________________________*/
-    
+    //MARK: -------------------------------------- DATA --------------------------------------
+
 #warning ("TODO:")
     //https://firebase.google.com/docs/firestore/query-data/listen#swift
     //    func songsRealTimeUpdate() {
@@ -129,7 +95,7 @@ class ModelFirebase{
     //     func userRealTimeUpdate() {}
     
     
-    //_________ New Documents Fetching _________
+    //MARK: ---------- New Documents Fetching ----------
     
     func getFeedSongs(since:Int64, completion:@escaping ([Song])->Void){
         db.collection(Song.COLLECTION_NAME)
@@ -197,7 +163,7 @@ class ModelFirebase{
             }
     }
     
-    //_________ Multiple Documents Fetching _________
+    //MARK: ---------- Multiple Documents Fetching ----------
     
     func getMixtapesByIds(mixtapeIds:[String], completion:@escaping ([Mixtape])->Void){
         //'in' filters support a maximum of 10 elements in the value array
@@ -267,7 +233,7 @@ class ModelFirebase{
         }
     }
     
-    //_________ Single Document Fetching _________
+    //MARK: ---------- Single Document Fetching ----------
     
     func getSongById(songId:String, completion:@escaping (Song)->Void ){
         db.collection(Song.COLLECTION_NAME)
@@ -311,8 +277,7 @@ class ModelFirebase{
             }
     }
     
-    
-    //_________ Document Creation _________
+    //MARK: ---------- Document Creation ----------
     
     func addSong(song:Song, completion:@escaping (_ newSongId:String)->Void){
         let addedDocRef:DocumentReference = db.collection(Song.COLLECTION_NAME).document()
@@ -341,7 +306,7 @@ class ModelFirebase{
         }
     }
     
-    //_________ Document Updating _________
+    //MARK: ---------- Document Updating ----------
     
     func updateSong(song:Song, completion:@escaping ()->Void){
         var json = song.toJson()

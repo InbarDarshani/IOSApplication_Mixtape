@@ -3,15 +3,15 @@ import SwiftyGif
 
 class IntroViewController: UIViewController {
     
+    //MARK: View references
     @IBOutlet weak var introGif: UIImageView!
     
+    //MARK: View functions
     override func viewWillAppear(_ animated: Bool) {
         introGif.delegate = self
-        introGif.clear()
         do {
-            let gif = try UIImage(gifName: "mixtape_loader.gif", levelOfIntegrity:0.2)
+            let gif = try UIImage(gifName: "mixtape_loader.gif", levelOfIntegrity:0.05)
             introGif.setGifImage(gif, loopCount: 1)
-
         } catch { NSLog("IntroViewController - error loading gif \(error)") }
     }
     
@@ -31,19 +31,20 @@ class IntroViewController: UIViewController {
             targetStoryboard = self.storyboard!
         }
         
+        //Replace root view controller to the target storyboard entry point controller
         if let targetViewController = targetStoryboard.instantiateInitialViewController() {
             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(targetViewController)
         }
     }
+
 }
 
 extension IntroViewController: SwiftyGifDelegate {
+    //Wait for gif loop to end
     func gifDidStop(sender: UIImageView) {
         if Model.instance.isSignedIn(){
-            print("User connected")
             performSegue(withIdentifier: "toMain", sender: self)
         } else {
-            print("No User connected")
             performSegue(withIdentifier: "toLogin", sender: self)
         }
     }

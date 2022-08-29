@@ -9,6 +9,14 @@ import UIKit
 
 class UserViewController: UIViewController {
 
+    @IBAction func logout(_ sender: Any) {
+        Model.instance.signOut()
+        //Replace root view controller to the login storyboard entry point controller
+        if let targetViewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController() {
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(targetViewController)
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,14 +24,14 @@ class UserViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toLogin" {
+            //Replace root view controller to the main storyboard entry point controller
+            if let targetViewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController() {
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(targetViewController)
+            }
+        }
     }
-    */
+    
 
 }

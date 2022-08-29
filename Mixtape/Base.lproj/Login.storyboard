@@ -61,7 +61,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WkD-az-w9q">
                                         <rect key="frame" x="0.0" y="44" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -90,8 +90,8 @@
                     <navigationItem key="navigationItem" id="KBa-Jp-8cd"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="emailField" destination="I9F-WB-Ztb" id="cVl-iz-pK1"/>
-                        <outlet property="passwordField" destination="WkD-az-w9q" id="dkz-kL-6Kt"/>
+                        <outlet property="email_tf" destination="I9F-WB-Ztb" id="cVl-iz-pK1"/>
+                        <outlet property="password_tf" destination="WkD-az-w9q" id="dkz-kL-6Kt"/>
                         <segue destination="ufK-eg-KUn" kind="show" identifier="toMain" id="kRK-5b-2Ei"/>
                     </connections>
                 </viewController>
@@ -196,10 +196,10 @@
                     <navigationItem key="navigationItem" id="UVV-CV-6YD"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="emailField" destination="Z4N-lF-UNh" id="acI-6n-VpV"/>
-                        <outlet property="firstNameField" destination="lsy-f5-NoN" id="8mc-zc-mqb"/>
-                        <outlet property="lastNameField" destination="YDz-Xz-diJ" id="f2u-j1-LyI"/>
-                        <outlet property="passwordField" destination="KiK-CQ-YIO" id="f7a-rk-bXw"/>
+                        <outlet property="email_tf" destination="Z4N-lF-UNh" id="acI-6n-VpV"/>
+                        <outlet property="firstname_tf" destination="lsy-f5-NoN" id="8mc-zc-mqb"/>
+                        <outlet property="lastname_tf" destination="YDz-Xz-diJ" id="f2u-j1-LyI"/>
+                        <outlet property="password_tf" destination="KiK-CQ-YIO" id="f7a-rk-bXw"/>
                         <segue destination="ufK-eg-KUn" kind="show" identifier="toMain" id="efn-Yn-Ag0"/>
                     </connections>
                 </viewController>

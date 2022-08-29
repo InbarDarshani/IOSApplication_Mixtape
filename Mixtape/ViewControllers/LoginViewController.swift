@@ -1,56 +1,60 @@
 import UIKit
 
+//Same Controller for sign-in and sign-up pages
 class LoginViewController: UIViewController {
-    //View variables
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var firstNameField: UITextField!
-    @IBOutlet weak var lastNameField: UITextField!
+
+    //MARK: View references
+    @IBOutlet weak var email_tf: UITextField!
+    @IBOutlet weak var password_tf: UITextField!
+    @IBOutlet weak var firstname_tf: UITextField!
+    @IBOutlet weak var lastname_tf: UITextField!
     
-    //Passed variables
-    var email = "" { didSet{ if(emailField != nil){ emailField.text = email } } }
-    var password = "" { didSet{ if(passwordField != nil){ passwordField.text = password } } }
-    var firstName = "" { didSet{ if(firstNameField != nil){ firstNameField.text = firstName } } }
-    var lastName = "" { didSet{ if(lastNameField != nil){ lastNameField.text = lastName } } }
+    //MARK: Data holders
+    var email = "" { didSet{ if(email_tf != nil){ email_tf.text = email } } }
+    var password = "" { didSet{ if(password_tf != nil){ password_tf.text = password } } }
+    var firstName = "" { didSet{ if(firstname_tf != nil){ firstname_tf.text = firstName } } }
+    var lastName = "" { didSet{ if(lastname_tf != nil){ lastname_tf.text = lastName } } }
     
-    //Internal variables
+    //MARK: Internal variables
     let alert = UIAlertController(title: "Login Error", message: "", preferredStyle: .alert)
     let alertAction = UIAlertAction(title:"OK", style: .default, handler: { (alert:UIAlertAction!)-> Void in } )
     var newUser = false
     var emailInput = ""
     var passwordInput = ""
-    var firstNameInput = ""
-    var lastNameInput = ""
-        
+    var firstnameInput = ""
+    var lastnameInput = ""
+    
+    //MARK: View Actions
     @IBAction func unwind(unwindSegue: UIStoryboardSegue){}
     
     @IBAction func signIn(_ sender: Any) {
-        //print("SignIn \(emailField.text) and \(passwordField.text)")
+        //print("SignIn \(String(describing: email_tf.text)) and \(String(describing: password_tf.text))")
         submit()
     }
     
     @IBAction func signUp(_ sender: Any) {
-        //print("SignUp \(String(describing: emailField.text)) \(passwordField.text)")
+        //print("SignUp \(String(describing: email_tf.text)) \(String(describing: password_tf.text))")
         newUser = true
         submit()
     }
     
+    //MARK: View functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(emailField != nil){ emailField.text = email }
-        if(passwordField != nil){ passwordField.text = password }
-        if(firstNameField != nil){ firstNameField.text = firstName }
-        if(lastNameField != nil){ lastNameField.text = lastName }
+        if(email_tf != nil){ email_tf.text = email }
+        if(password_tf != nil){ password_tf.text = password }
+        if(firstname_tf != nil){ firstname_tf.text = firstName }
+        if(lastname_tf != nil){ lastname_tf.text = lastName }
         alert.addAction(alertAction)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSignUp" || segue.identifier == "toSignIn"{
             let destination = segue.destination as! LoginViewController
-            destination.email = self.emailField.text!
-            destination.password = self.passwordField.text!
-            destination.firstName = self.firstNameField?.text ?? ""
-            destination.lastName = self.lastNameField?.text ?? ""
+            destination.email = self.email_tf.text!
+            destination.password = self.password_tf.text!
+            destination.firstName = self.firstname_tf?.text ?? ""
+            destination.lastName = self.lastname_tf?.text ?? ""
         }
         
         if segue.identifier == "toMain" {
@@ -61,25 +65,20 @@ class LoginViewController: UIViewController {
         }
     }
     
+    //MARK: Internal functions
     func submit(){
         if validateInput(){
-            Model.instance.signInsignUp(newUser: newUser, fullName: firstNameInput + " " + lastNameInput, email: emailInput, password: passwordInput){ user, error in
+            Model.instance.signInsignUp(newUser: newUser, fullName: firstnameInput + " " + lastnameInput, email: emailInput, password: passwordInput){ user, error in
                 guard error == nil else{
                     self.alert.message = error
                     return
                 }
                 self.performSegue(withIdentifier: "toMain", sender: self)
             }
+        }else{
+            self.present(alert, animated:true, completion:nil)
         }
-        self.present(alert, animated:true, completion:nil)
     }
-    
-//    func toMainStoryboard(){
-//        //Replace root view controller to the main storyboard entry point controller
-//        if let targetViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() {
-//            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(targetViewController)
-//        }
-//    }
     
     func validateInput() -> Bool {
         let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -88,10 +87,10 @@ class LoginViewController: UIViewController {
         let passswordValidator = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
         
         //Get and Set user inputs
-        emailInput = emailField.text!.trimmingCharacters(in: .whitespaces)
-        passwordInput = passwordField.text!
-        firstNameInput = firstNameField?.text ?? ""
-        lastNameInput = lastNameField?.text ?? ""
+        emailInput = email_tf.text!.trimmingCharacters(in: .whitespaces)
+        passwordInput = password_tf.text!
+        firstnameInput = firstname_tf?.text ?? ""
+        lastnameInput = lastname_tf?.text ?? ""
         
         if emailInput.isEmpty || passwordInput.isEmpty{
             alert.message = "Please fill both email and password"
@@ -104,8 +103,7 @@ class LoginViewController: UIViewController {
         }
         
         if newUser{
-            
-            if firstNameInput.isEmpty || lastNameInput.isEmpty{
+            if firstnameInput.isEmpty || lastnameInput.isEmpty{
                 alert.message = "Please fill first and last name"
                 return false
             }

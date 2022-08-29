@@ -23,9 +23,9 @@
         "package": "Firebase",
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
-          "branch": "master",
-          "revision": "5368508930211e9e8dcc32b872cade62cd3b4a29",
-          "version": null
+          "branch": null,
+          "revision": "7f31a43f8c49bd4a1723bc9fecdfaa4411dd9f36",
+          "version": "9.5.0"
         }
       },
       {
@@ -69,8 +69,17 @@
         "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
         "state": {
           "branch": null,
-          "revision": "19605024d59eaefdb1f6a2cb11ebe75df4421126",
-          "version": "2.0.0"
+          "revision": "4e9bbf2808b8fee444e84a48f5f3c12641987d3e",
+          "version": "1.7.2"
+        }
+      },
+      {
+        "package": "iOSDropDown",
+        "repositoryURL": "https://github.com/jriosdev/iOSDropDown.git",
+        "state": {
+          "branch": null,
+          "revision": "945c4f1945ed37a31055e812a5ee11a3d06e88ab",
+          "version": "0.4.0"
         }
       },
       {
@@ -107,6 +116,15 @@
           "branch": null,
           "revision": "3e4e743631e86c8c70dbc6efdc7beaa6e90fd3bb",
           "version": "2.1.1"
+        }
+      },
+      {
+        "package": "RSSelectionMenu",
+        "repositoryURL": "https://github.com/rushisangani/RSSelectionMenu.git",
+        "state": {
+          "branch": null,
+          "revision": "38ce9a7773e192a04c99a73b20651b5f47aafbcc",
+          "version": "7.1.3"
         }
       },
       {

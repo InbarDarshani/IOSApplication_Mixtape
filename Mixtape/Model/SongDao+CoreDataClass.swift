@@ -11,7 +11,7 @@ public class SongDao: NSManagedObject {
         return appDelegate.persistentContainer.viewContext
     }()
     
-    /*______________________________________ GET ______________________________________*/
+    /*-------------------------------------- GET --------------------------------------*/
     
     static func getOne(byId:String)->Song?{
         guard let context = context else { return nil }
@@ -52,7 +52,7 @@ public class SongDao: NSManagedObject {
         return self.getAll().filter({ $0.userId == byUserId })
     }
     
-    /*______________________________________ INSERT ______________________________________*/
+    /*-------------------------------------- INSERT --------------------------------------*/
     
     static func insert(song:Song){
         if (song.deleted) { return }
@@ -87,7 +87,7 @@ public class SongDao: NSManagedObject {
         self.setLocalLastUpdated(date: lastUpdate)
     }
     
-    /*______________________________________ DELETE ______________________________________*/
+    /*-------------------------------------- DELETE --------------------------------------*/
     
     static func delete(song:Song){
         guard let context = context else { return }
@@ -111,7 +111,7 @@ public class SongDao: NSManagedObject {
         }
     }
     
-    /*______________________________________ LAST UPDATE ______________________________________*/
+    /*-------------------------------------- LAST UPDATE --------------------------------------*/
 
     static func getLocalLastUpdated() -> Int64{
         return Int64(UserDefaults.standard.integer(forKey: "SONGDAO_LAST_UPDATE"))

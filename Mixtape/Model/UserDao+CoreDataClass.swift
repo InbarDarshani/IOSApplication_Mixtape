@@ -11,7 +11,7 @@ public class UserDao: NSManagedObject {
         return appDelegate.persistentContainer.viewContext
     }()
     
-    /*______________________________________ GET ______________________________________*/
+    /*-------------------------------------- GET --------------------------------------*/
     
     static func getOne(byId:String)->User?{
         guard let context = context else { return nil }
@@ -44,7 +44,7 @@ public class UserDao: NSManagedObject {
         }catch let error as NSError{ NSLog("TAG UserDao - fetch error \(error) \(error.userInfo)"); return []; }
     }
     
-    /*______________________________________ INSERT ______________________________________*/
+    /*-------------------------------------- INSERT --------------------------------------*/
     
     static func insert(user:User){
         guard let context = context else { return }
@@ -73,7 +73,7 @@ public class UserDao: NSManagedObject {
         self.setLocalLastUpdated(date: lastUpdate)
     }
     
-    /*______________________________________ DELETE ______________________________________*/
+    /*-------------------------------------- DELETE --------------------------------------*/
     
     static func delete(user:User){
         guard let context = context else { return }
@@ -91,7 +91,7 @@ public class UserDao: NSManagedObject {
         }catch let error as NSError{ NSLog("TAG UserDao - delete error \(error) \(error.userInfo)") }
     }
     
-    /*______________________________________ LAST UPDATE ______________________________________*/
+    /*-------------------------------------- LAST UPDATE --------------------------------------*/
     
     static func getLocalLastUpdated() -> Int64{
         return Int64(UserDefaults.standard.integer(forKey: "USERDAO_LAST_UPDATE"))

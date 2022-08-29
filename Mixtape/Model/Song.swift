@@ -19,17 +19,31 @@ class Song{
     
     init(){}
     
+    init(songId: String, name: String, artist: String, caption: String, userId: String, mixtapeId: String,
+         imageUrl: String = "", timeModified: Int64 = 0, timeCreated: Int64 = 0, deleted: Bool = false){
+        self.songId = songId
+        self.name = name
+        self.artist = artist
+        self.caption = caption
+        self.imageUrl = imageUrl
+        self.timeModified = timeModified
+        self.timeCreated = timeCreated
+        self.deleted = deleted
+        self.userId = userId
+        self.mixtapeId = mixtapeId
+    }
+    
     init(song:SongDao){
-        songId = song.songId
-        name = song.name
-        artist = song.artist
-        caption = song.caption
-        imageUrl = song.imageUrl
-        timeModified = song.timeModified
-        timeCreated = song.timeCreated
-        deleted = song.isDeleted
-        userId = song.userId
-        mixtapeId = song.mixtapeId
+        self.songId = song.songId
+        self.name = song.name
+        self.artist = song.artist
+        self.caption = song.caption
+        self.imageUrl = song.imageUrl
+        self.timeModified = song.timeModified
+        self.timeCreated = song.timeCreated
+        self.deleted = song.isDeleted
+        self.userId = song.userId
+        self.mixtapeId = song.mixtapeId
     }
 }
 	
@@ -41,12 +55,8 @@ extension Song{
         s.artist = json["artist"] as? String
         s.caption = json["caption"] as? String
         s.imageUrl = json["image"] as? String
-        if let tm = json["timeModified"] as? Timestamp{
-            s.timeModified = tm.seconds
-        }
-        if let tc = json["timeCreated"] as? Timestamp{
-            s.timeCreated = tc.seconds
-        }
+        if let tm = json["timeModified"] as? Timestamp{ s.timeModified = tm.seconds }
+        if let tc = json["timeCreated"] as? Timestamp{ s.timeCreated = tc.seconds }
         s.deleted = (json["deleted"] as? String == "true")
         s.userId = json["userId"] as? String
         s.mixtapeId = json["mixtapeId"] as? String

@@ -13,7 +13,7 @@ class Model{
     
     private init(){}
     
-    /*______________________________________ AUTHENTICATION ______________________________________*/
+    //MARK: -------------------------------------- AUTHENTICATION --------------------------------------
     
     func isSignedIn()->Bool{ return firebase.isSignedIn() }
     
@@ -22,16 +22,18 @@ class Model{
             firebase.signUp(fullName:fullName, email:email, password:password){ user, error  in
                 guard let user = user , error == nil else { completion(nil, error); return; }
                 self.saveCurrentUser(user)
+                completion(user, nil)
             }
         } else{
             firebase.signIn(fullName:fullName, email:email, password:password){ user, error  in
                 guard let user = user , error == nil else { completion(nil, error); return; }
                 self.saveCurrentUser(user)
+                completion(user, nil)
             }
         }
     }
     
-    func signOut(){ firebase.signOut(); clearCurrentUser(); }
+    func signOut(){ clearCurrentUser(); firebase.signOut(); }
     
     private func saveCurrentUser(_ user:User){
         //Save user id to app shared preferences
@@ -61,9 +63,23 @@ class Model{
         return u
     }
     
-    /*___________________________________________ DATA ___________________________________________*/
+    //MARK: ---------------------------------------- STORAGE ----------------------------------------
     
-    //_________ Local Objects Saving and Updating _________
+    private func uploadImage(imageName:String, folder:String, image:UIImage, completion:@escaping(_ url:String)->Void){
+        firebase.uploadImage(imageName: imageName, folder: folder, image: image, completion: completion)
+    }
+    
+    func uploadSongImage(image:UIImage, song:Song, completion:@escaping(_ url:String)->Void){
+        uploadImage(imageName: song.songId!, folder: Song.COLLECTION_NAME, image: image, completion:completion)
+    }
+    
+    func uploadUserImage(image:UIImage, user:User, completion:@escaping(_ url:String)->Void){
+        uploadImage(imageName: user.userId!, folder: User.COLLECTION_NAME, image: image, completion: completion)
+    }
+    
+    //MARK: -------------------------------------- DATA --------------------------------------
+    
+    //MARK: ---------- Local Objects Saving and Updating ----------
     
     private func saveSong(song:Song){
         dispatchQueue.async{
@@ -83,12 +99,11 @@ class Model{
     private func saveUser(user:User){
         dispatchQueue.async{
             UserDao.insert(user: user)
-            
         }
         getFeedData(){}
     }
     
-    //_________ Objects Binding _________
+    //MARK: ---------- Objects Binding ----------
     
     //Construct feed song items objects from local db
     private func constructFeedItems() -> [SongItem]{
@@ -178,7 +193,7 @@ class Model{
         return nil
     }
     
-    //_________ Multiple Objects Fetching _________
+    //MARK: ---------- Multiple Objects Fetching ----------
     
     func getFeed(completion:@escaping ([SongItem])->Void) {
         getFeedData(){
@@ -192,6 +207,7 @@ class Model{
         let userId = getCurrentUser().userId!
         getProfileData(userId: userId){
             let results = self.constructUserMixtapeItems(userId: userId)
+            NSLog("TAG Model - firebase returned \(results.count) mixtapeItems to profile")
             DispatchQueue.main.async { completion(results) }
         }
     }
@@ -207,6 +223,12 @@ class Model{
         }
         
         firebase.getFeedSongs(since: lastUpdate){ newSongs in
+            
+            if newSongs.count == 0 {
+                completion()
+                return
+            }
+            
             //Save new feed songs to local db
             self.dispatchQueue.async{ SongDao.insertMany(songs: newSongs) }
             
@@ -218,13 +240,12 @@ class Model{
             self.firebase.getUsersByIds(userIds: newUserIds){ newUsers in
                 //Save feed users to local db
                 self.dispatchQueue.async{ UserDao.insertMany(users: newUsers) }
-  
+                
                 self.firebase.getMixtapesByIds(mixtapeIds: newMixtapeIds){ newMixtapes in
                     //Save feed mixtapes to local db
                     self.dispatchQueue.async{
                         MixtapeDao.insertMany(mixtapes: newMixtapes)
-                        
-                        if newSongs.count > 0 { completion() }
+                        completion()
                     }
                 }
             }
@@ -234,12 +255,15 @@ class Model{
     private func getProfileData(userId:String, completion:@escaping ()->Void) {
         firebase.getUserMixtapes(since: 0, userId: userId){ mixtapes in
             if mixtapes.isEmpty { return }
-            //Save feed mixtapes to local db
-            self.dispatchQueue.async{ MixtapeDao.insertMany(mixtapes: mixtapes) }
+            //Save profile mixtapes to local db
+            self.dispatchQueue.async{
+                MixtapeDao.insertMany(mixtapes: mixtapes)
+                completion()
+            }
         }
     }
     
-    //_________ Single Objects Fetching _________
+    //MARK: ---------- Single Objects Fetching ----------
     
     func getSongItem(songId:String) -> SongItem?{
         //First search if already exists in local db
@@ -251,7 +275,7 @@ class Model{
                 result = self.constructSongItem(songId: songId)
             }
         }
-    
+        
         return result
     }
     
@@ -265,7 +289,7 @@ class Model{
                 result = self.constructMixtapeItem(mixtapeId: mixtapeId)
             }
         }
-    
+        
         return result
     }
     
@@ -279,12 +303,12 @@ class Model{
                 result = UserDao.getOne(byId: userId)
             }
         }
-    
+        
         return result
     }
     
-    //_________ Object Creation _________
-
+    //MARK: ---------- Object Creation ----------
+    
     //Add Song with no image and existing mixtape
     func addSong(song:Song, completion:@escaping ()->Void){
         firebase.addSong(song:song){ newSongId in
@@ -298,7 +322,7 @@ class Model{
         firebase.addMixtape(mixtape: mixtape){ newMixtapeId in
             self.saveMixtape(mixtape: mixtape)
             song.mixtapeId = newMixtapeId
-    
+            
             self.firebase.addSong(song:song){ newSongId in
                 song.songId = newSongId
                 self.saveSong(song: song)
@@ -344,7 +368,7 @@ class Model{
         firebase.addMixtape(mixtape: mixtape, completion: completion)
     }
     
-    //_________ Object Updating _________
+    //MARK: ---------- Object Updating ----------
     
     //Update Song
     func updateSong(song:Song, completion:@escaping ()->Void){
@@ -359,7 +383,7 @@ class Model{
         firebase.addMixtape(mixtape: mixtape){ newMixtapeId in
             self.saveMixtape(mixtape: mixtape)
             song.mixtapeId = newMixtapeId
-    
+            
             self.firebase.updateSong(song: song){
                 self.saveSong(song: song)
                 completion()
@@ -414,36 +438,26 @@ class Model{
         }
     }
     
-    //_________ Object Deleting _________
+    //MARK: ---------- Object Deleting ----------
     
     func deleteSong(song:Song, completion:@escaping ()->Void){
         song.deleted = true
-        dispatchQueue.async {
-            SongDao.delete(song: song)
-            self.getFeedData(completion: completion)
+        firebase.updateSong(song: song){
+            self.dispatchQueue.async {
+                SongDao.delete(song: song)
+                self.getFeedData(completion: completion)
+            }
         }
     }
     
     func deleteMixtape(mixtape:Mixtape, completion:@escaping ()->Void){
         mixtape.deleted = true
-        dispatchQueue.async {
-            MixtapeDao.delete(mixtape: mixtape)
-            self.getFeedData(completion: completion)
+        firebase.updateMixtape(mixtape: mixtape){
+            self.dispatchQueue.async {
+                MixtapeDao.delete(mixtape: mixtape)
+                self.getFeedData(completion: completion)
+            }
         }
-    }
-    
-    /*__________________________________________ STORAGE _________________________________________*/
-    
-    private func uploadImage(imageName:String, folder:String, image:UIImage, completion:@escaping(_ url:String)->Void){
-        firebase.uploadImage(imageName: imageName, folder: folder, image: image, completion: completion)
-    }
-    
-    func uploadSongImage(image:UIImage, song:Song, completion:@escaping(_ url:String)->Void){
-        uploadImage(imageName: song.songId!, folder: Song.COLLECTION_NAME, image: image, completion:completion)
-    }
-    
-    func uploadUserImage(image:UIImage, user:User, completion:@escaping(_ url:String)->Void){
-        uploadImage(imageName: user.userId!, folder: User.COLLECTION_NAME, image: image, completion: completion)
     }
     
 }
