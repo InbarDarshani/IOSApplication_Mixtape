@@ -1,13 +1,13 @@
 //
-//  MainViewController.swift
+//  UserViewController.swift
 //  Mixtape
 //
-//  Created by Inbar on 29/08/2022.
+//  Created by Inbar on 25/08/2022.
 //
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class UserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
