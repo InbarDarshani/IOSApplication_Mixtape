@@ -19,20 +19,13 @@ class Song{
     
     init(){}
     
-    init(songId: String, name: String, artist: String, caption: String, userId: String, mixtapeId: String,
-         imageUrl: String = "", timeModified: Int64 = 0, timeCreated: Int64 = 0, deleted: Bool = false){
-        self.songId = songId
+    init(name: String, artist: String, caption: String, userId: String){
         self.name = name
         self.artist = artist
         self.caption = caption
-        self.imageUrl = imageUrl
-        self.timeModified = timeModified
-        self.timeCreated = timeCreated
-        self.deleted = deleted
         self.userId = userId
-        self.mixtapeId = mixtapeId
     }
-    
+        
     init(song:SongDao){
         self.songId = song.songId
         self.name = song.name
@@ -41,7 +34,7 @@ class Song{
         self.imageUrl = song.imageUrl
         self.timeModified = song.timeModified
         self.timeCreated = song.timeCreated
-        self.deleted = song.isDeleted
+        self.deleted = false //song.isDeleted
         self.userId = song.userId
         self.mixtapeId = song.mixtapeId
     }
@@ -57,7 +50,7 @@ extension Song{
         s.imageUrl = json["image"] as? String
         if let tm = json["timeModified"] as? Timestamp{ s.timeModified = tm.seconds }
         if let tc = json["timeCreated"] as? Timestamp{ s.timeCreated = tc.seconds }
-        s.deleted = (json["deleted"] as? String == "true")
+        s.deleted = (json["deleted"] as? String) == "true"
         s.userId = json["userId"] as? String
         s.mixtapeId = json["mixtapeId"] as? String
         return s
@@ -72,7 +65,7 @@ extension Song{
         json["image"] = self.imageUrl!
         json["timeModified"] = FieldValue.serverTimestamp()
         json["timeCreated"] = FieldValue.serverTimestamp()
-        json["deleted"] = String(self.deleted)
+        json["deleted"] = self.deleted
         json["userId"] = self.userId!
         json["mixtapeId"] = self.mixtapeId!
         return json

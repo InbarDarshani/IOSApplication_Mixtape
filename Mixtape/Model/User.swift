@@ -2,7 +2,13 @@ import Foundation
 import Firebase
 
 class User{
+    //Remote db collection name
     public static var COLLECTION_NAME = "users"
+    //Keys names for shared prefrences
+    public static var KEYNAME_CURRENT_USER_ID = "currentUserId"
+    public static var KEYNAME_CURRENT_USER_EMAIL = "currentUserEmail"
+    public static var KEYNAME_CURRENT_USER_NAME = "currentUserName"
+    public static var KEYNAME_CURRENT_USER_IMAGE = "currentUserImageUrl"
     
     public var userId: String? = ""
     public var email: String? = ""

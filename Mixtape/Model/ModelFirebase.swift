@@ -23,7 +23,6 @@ class ModelFirebase{
         mAuth.signIn(withEmail: email, password: password) { authResult, error in
             guard let firebaseUser = authResult?.user, error == nil else {
                 NSLog("TAG Firebase - sign-in failed \(email)")
-#warning ("TODO?: Setup auth errors")
                 completion(nil, error!.localizedDescription)
                 return
             }
@@ -37,15 +36,13 @@ class ModelFirebase{
         mAuth.createUser(withEmail: email, password: password) { authResult, error in
             guard let firebaseUser = authResult?.user, error == nil else {
                 NSLog("TAG Firebase - sign-up failed \(email)")
-#warning ("TODO?: Setup auth errors")
                 completion(nil, error!.localizedDescription)
                 return
             }
             NSLog("TAG Firebase - sign-up success \(email)")
             //Create new user in firebase db and return to caller
             let u = User(userId: firebaseUser.uid, email: email, displayName: fullName)
-            self.addUser(user: u){ newUserId in
-                u.userId = newUserId
+            self.addUser(user: u){
                 completion(u, nil)
             }
         }
@@ -147,19 +144,35 @@ class ModelFirebase{
             }
     }
     
-    func getFeedDeletedSongs(since:Int64, completion:@escaping ([Song])->Void){
+    func getDeletedSongs(since:Int64, completion:@escaping ([Song])->Void){
         db.collection(Song.COLLECTION_NAME)
             .whereField("deleted", isEqualTo: true)
             .whereField("timeModified", isGreaterThanOrEqualTo: Timestamp(seconds: since, nanoseconds: 0))
             .getDocuments(){ querySnapshot, error in
                 var songsToRemove = [Song]()
-                if let error = error { NSLog("TAG Firebase - failed to get feed songs \(error)")} else {
+                if let error = error { NSLog("TAG Firebase - failed to get deleted songs \(error)")} else {
                     for document in querySnapshot!.documents {
                         let s = Song.fromJson(json: document.data())
                         songsToRemove.append(s)
                     }
                 }
                 completion(songsToRemove)
+            }
+    }
+    
+    func getDeletedMixtapes(since:Int64, completion:@escaping ([Mixtape])->Void){
+        db.collection(Mixtape.COLLECTION_NAME)
+            .whereField("deleted", isEqualTo: true)
+            .whereField("timeModified", isGreaterThanOrEqualTo: Timestamp(seconds: since, nanoseconds: 0))
+            .getDocuments(){ querySnapshot, error in
+                var mixtapesToRemove = [Mixtape]()
+                if let error = error { NSLog("TAG Firebase - failed to get deleted mixtapes \(error)")} else {
+                    for document in querySnapshot!.documents {
+                        let m = Mixtape.fromJson(json: document.data())
+                        mixtapesToRemove.append(m)
+                    }
+                }
+                completion(mixtapesToRemove)
             }
     }
     
@@ -204,7 +217,6 @@ class ModelFirebase{
         
         if userIds.count > 10{
             db.collection(User.COLLECTION_NAME)
-                .whereField("deleted", isEqualTo: false)
                 .getDocuments(){ querySnapshot, error in
                     var users = [User]()
                     if let error = error { NSLog("TAG Firebase - failed to get users \(error)") } else {
@@ -263,6 +275,20 @@ class ModelFirebase{
             }
     }
     
+//    func getMixtapeByName(mixtapeName:String, completion:@escaping (Mixtape)->Void ){
+//        db.collection(Mixtape.COLLECTION_NAME)
+//            .whereField("name", isEqualTo: mixtapeName)
+//            .getDocuments(){ querySnapshot, error in
+//                var mixtape = Mixtape()
+//                if let error = error { NSLog("TAG Firebase - failed to get mixtape \(error)")} else {
+//                    for document in querySnapshot!.documents {
+//                        mixtape = Mixtape.fromJson(json: document.data())
+//                    }
+//                }
+//                completion(mixtape)
+//            }
+//    }
+    
     func getUserById(userId:String, completion:@escaping (User)->Void ){
         db.collection(User.COLLECTION_NAME)
             .whereField("userId", isEqualTo: userId)
@@ -297,12 +323,11 @@ class ModelFirebase{
         }
     }
     
-    func addUser(user:User, completion:@escaping (_ newUserId:String)->Void){
-        let addedDocRef:DocumentReference = db.collection(User.COLLECTION_NAME).document()
-        user.userId = addedDocRef.documentID
+    func addUser(user:User, completion:@escaping ()->Void){
+        let addedDocRef:DocumentReference = db.collection(User.COLLECTION_NAME).document(user.userId!)
         addedDocRef.setData(user.toJson()) { error in
             if let error = error { NSLog("TAG Firebase - failed to add user \(error)") }
-            else { completion(user.userId!) }
+            else { completion() }
         }
     }
     

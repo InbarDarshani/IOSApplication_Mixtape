@@ -25,7 +25,7 @@ public class SongDao: NSManagedObject {
             if let object = try context.fetch(fetchRequest).first {
             return Song(song:object)
             }
-        }catch let error as NSError{ NSLog("TAG SongDao - fetch error \(error) \(error.userInfo)")}
+        }catch let error as NSError{ NSLog("TAG SongDao - fetch error \(error)")}
         
         return nil
     }
@@ -41,7 +41,7 @@ public class SongDao: NSManagedObject {
             var results:[Song] = []
             (try context.fetch(fetchRequest)).forEach{ object in results.append(Song(song:object)) }
             return results
-        }catch let error as NSError{ NSLog("TAG SongDao - fetch error \(error) \(error.userInfo)"); return []; }
+        }catch let error as NSError{ NSLog("TAG SongDao - fetch error \(error)"); return []; }
     }
     
     static func getMany(byMixtapeId:String)->[Song]{
@@ -55,7 +55,6 @@ public class SongDao: NSManagedObject {
     /*-------------------------------------- INSERT --------------------------------------*/
     
     static func insert(song:Song){
-        if (song.deleted) { return }
         guard let context = context else { return }
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         
@@ -74,7 +73,7 @@ public class SongDao: NSManagedObject {
         //Save
         do{
             try context.save()
-        }catch let error as NSError{ NSLog("TAG SongDao - insert error \(error) \(error.userInfo)") }
+        }catch let error as NSError{ NSLog("TAG SongDao - insert error \(error)") }
     }
     
     static func insertMany(songs:[Song]){
@@ -102,7 +101,7 @@ public class SongDao: NSManagedObject {
                 context.delete(object)
                 try context.save()
             }
-        }catch let error as NSError{ NSLog("TAG SongDao - delete error \(error) \(error.userInfo)") }
+        }catch let error as NSError{ NSLog("TAG SongDao - delete error \(error)") }
     }
     
     static func deleteMany(songs:[Song]){

@@ -5,7 +5,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>storytime.ttf</string>
-		<string>quicksand.ttf</string>
+		<string>quicksand-regular.ttf</string>
+		<string>quicksand-bold.ttf</string>
+		<string>quicksand-light.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -26,5 +28,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string></string>
 </dict>
 </plist>

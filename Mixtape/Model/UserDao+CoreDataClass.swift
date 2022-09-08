@@ -25,7 +25,7 @@ public class UserDao: NSManagedObject {
             if let object = try context.fetch(fetchRequest).first {
                 return User(user:object)
             }
-        }catch let error as NSError{ NSLog("TAG UserDao - fetch error \(error) \(error.userInfo)") }
+        }catch let error as NSError{ NSLog("TAG UserDao - fetch error \(error)") }
         
         return nil
     }
@@ -41,7 +41,7 @@ public class UserDao: NSManagedObject {
             var results:[User] = []
             (try context.fetch(fetchRequest)).forEach{ object in results.append(User(user:object)) }
             return results
-        }catch let error as NSError{ NSLog("TAG UserDao - fetch error \(error) \(error.userInfo)"); return []; }
+        }catch let error as NSError{ NSLog("TAG UserDao - fetch error \(error)"); return []; }
     }
     
     /*-------------------------------------- INSERT --------------------------------------*/
@@ -60,7 +60,7 @@ public class UserDao: NSManagedObject {
         //Save
         do{
             try context.save()
-        }catch let error as NSError{ NSLog("TAG UserDao - insert error \(error) \(error.userInfo)") }
+        }catch let error as NSError{ NSLog("TAG UserDao - insert error \(error)") }
     }
     
     static func insertMany(users:[User]){
@@ -88,7 +88,7 @@ public class UserDao: NSManagedObject {
                 context.delete(object)
                 try context.save()
             }
-        }catch let error as NSError{ NSLog("TAG UserDao - delete error \(error) \(error.userInfo)") }
+        }catch let error as NSError{ NSLog("TAG UserDao - delete error \(error)") }
     }
     
     /*-------------------------------------- LAST UPDATE --------------------------------------*/

@@ -1,7 +1,7 @@
 import UIKit
 import SwiftyGif
 
-class IntroViewController: UIViewController {
+class IntroViewController: UIViewController, SwiftyGifDelegate {
     
     //MARK: View references
     @IBOutlet weak var introGif: UIImageView!
@@ -36,16 +36,14 @@ class IntroViewController: UIViewController {
             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(targetViewController)
         }
     }
-
-}
-
-extension IntroViewController: SwiftyGifDelegate {
-    //Wait for gif loop to end
-    func gifDidStop(sender: UIImageView) {
+   
+    func gifDidStart(sender: UIImageView) {
+        //Perform the proper segue according to account status
         if Model.instance.isSignedIn(){
             performSegue(withIdentifier: "toMain", sender: self)
         } else {
             performSegue(withIdentifier: "toLogin", sender: self)
         }
     }
+
 }

@@ -5,12 +5,39 @@ import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    override init() {
+        super.init()
+        //Override systemfont
+        UIFont.overrideInitialize()
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //Firebase init from GoogleService-Info file
         FirebaseApp.configure()
         
-        #warning("TODO: app theme")
-    
+        //App theme setup
+        UILabel.appearance().adjustsFontSizeToFitWidth = true                   //set font to resize automaticly
+        
+        UINavigationBar.appearance().tintColor = UIColor(named: "white")        //background color of the navigation bar
+        UINavigationBar.appearance().barTintColor = UIColor(named: "beige")      //color of the back indicator image, button titles, button images
+        UINavigationBar.appearance().isTranslucent = false
+        let nabBarAppearance = UINavigationBarAppearance()
+        nabBarAppearance.configureWithOpaqueBackground()
+        nabBarAppearance.backgroundColor = UIColor(named: "beige")
+        nabBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "white")!, .font: UIFont(name: "quicksand-light", size: 16)]
+        UINavigationBar.appearance().standardAppearance = nabBarAppearance
+        UINavigationBar.appearance().compactAppearance = nabBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = nabBarAppearance
+        UINavigationBar.appearance().compactScrollEdgeAppearance = nabBarAppearance
+        
+        UITabBar.appearance().tintColor = UIColor(named: "white")
+        UITabBar.appearance().barTintColor = UIColor(named: "beige")
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = UIColor(named: "beige")
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        
         return true
     }
     

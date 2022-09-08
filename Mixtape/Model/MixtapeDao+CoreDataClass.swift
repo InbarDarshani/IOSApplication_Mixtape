@@ -25,7 +25,24 @@ public class MixtapeDao: NSManagedObject {
             if let object = (try context.fetch(fetchRequest)).first {
                 return Mixtape(mixtape:object)
             }
-        }catch let error as NSError{ NSLog("TAG MixtapeDao - fetch error \(error) \(error.userInfo)") }
+        }catch let error as NSError{ NSLog("TAG MixtapeDao - fetch error \(error)") }
+        
+        return nil
+    }
+        
+    static func getOne(byName:String)->Mixtape?{
+        guard let context = context else { return nil }
+        
+        //Setup query
+        let fetchRequest = MixtapeDao.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", byName)
+        
+        //Perform fetch
+        do{
+            if let object = (try context.fetch(fetchRequest)).first {
+                return Mixtape(mixtape:object)
+            }
+        }catch let error as NSError{ NSLog("TAG MixtapeDao - fetch error \(error)") }
         
         return nil
     }
@@ -41,7 +58,7 @@ public class MixtapeDao: NSManagedObject {
             var results:[Mixtape] = []
             (try context.fetch(fetchRequest)).forEach{ object in results.append(Mixtape(mixtape:object)) }
             return results
-        }catch let error as NSError{ NSLog("TAG MixtapeDao - fetch error \(error) \(error.userInfo)"); return []; }
+        }catch let error as NSError{ NSLog("TAG MixtapeDao - fetch error \(error)"); return []; }
     }
     
     static func getMany(byUserId:String)->[Mixtape]{
@@ -51,7 +68,6 @@ public class MixtapeDao: NSManagedObject {
     /*-------------------------------------- INSERT --------------------------------------*/
     
     static func insert(mixtape:Mixtape){
-        if (mixtape.deleted) { return }
         guard let context = context else { return }
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         
@@ -67,7 +83,7 @@ public class MixtapeDao: NSManagedObject {
         //Save
         do{
             try context.save()
-        }catch let error as NSError{ NSLog("TAG MixtapeDao - insert error \(error) \(error.userInfo)") }
+        }catch let error as NSError{ NSLog("TAG MixtapeDao - insert error \(error)") }
     }
     
     static func insertMany(mixtapes:[Mixtape]){
@@ -95,7 +111,13 @@ public class MixtapeDao: NSManagedObject {
                 context.delete(object)
                 try context.save()
             }
-        }catch let error as NSError{ NSLog("TAG MixtapeDao - delete error \(error) \(error.userInfo)") }
+        }catch let error as NSError{ NSLog("TAG MixtapeDao - delete error \(error)") }
+    }
+    
+    static func deleteMany(mixtapes:[Mixtape]){
+        for mixtape in mixtapes {
+            self.delete(mixtape: mixtape)
+        }
     }
     
     /*-------------------------------------- LAST UPDATE --------------------------------------*/

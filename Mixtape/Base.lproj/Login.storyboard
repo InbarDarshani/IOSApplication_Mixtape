@@ -16,13 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mixtape App!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wja-9I-4fY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mixtape App!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wja-9I-4fY">
                                 <rect key="frame" x="20" y="309" width="374" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login With Your Mixtaper Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyP-OU-V9M">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login With Your Mixtaper Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyP-OU-V9M">
                                 <rect key="frame" x="20" y="385" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -60,11 +60,14 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WkD-az-w9q">
                                         <rect key="frame" x="0.0" y="44" width="374" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ppn-qu-VdZ">
+                                <rect key="frame" x="188.5" y="600" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -77,12 +80,14 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Z0Q-zW-v8v" secondAttribute="trailing" constant="20" id="Bd9-zA-pdK"/>
                             <constraint firstItem="Z0Q-zW-v8v" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="80" id="HA3-dm-GFt"/>
                             <constraint firstItem="qSN-by-xAN" firstAttribute="top" secondItem="ZyP-OU-V9M" secondAttribute="bottom" constant="30" id="JQ3-dw-KvG"/>
+                            <constraint firstItem="Vtw-38-xpS" firstAttribute="top" secondItem="ppn-qu-VdZ" secondAttribute="bottom" constant="20" id="YrX-Yc-TeI"/>
                             <constraint firstItem="4NK-I8-mHB" firstAttribute="top" secondItem="qSN-by-xAN" secondAttribute="bottom" constant="140" id="bG0-VF-Hoe"/>
                             <constraint firstItem="4NK-I8-mHB" firstAttribute="leading" secondItem="Vtw-38-xpS" secondAttribute="trailing" constant="17" id="dPM-Nv-KYt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4NK-I8-mHB" secondAttribute="trailing" constant="46" id="dQc-oF-ibT"/>
                             <constraint firstItem="Vtw-38-xpS" firstAttribute="top" secondItem="qSN-by-xAN" secondAttribute="bottom" constant="140" id="eq4-ZS-mXo"/>
                             <constraint firstItem="qSN-by-xAN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="g99-TA-SqM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Wja-9I-4fY" secondAttribute="trailing" constant="20" id="i8V-qW-S7f"/>
+                            <constraint firstItem="ppn-qu-VdZ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="nzH-F0-Mhp"/>
                             <constraint firstItem="Wja-9I-4fY" firstAttribute="top" secondItem="Z0Q-zW-v8v" secondAttribute="bottom" constant="35" id="okE-dp-sge"/>
                             <constraint firstItem="ZyP-OU-V9M" firstAttribute="top" secondItem="Wja-9I-4fY" secondAttribute="bottom" constant="40" id="qrJ-iq-cuq"/>
                         </constraints>
@@ -90,6 +95,7 @@
                     <navigationItem key="navigationItem" id="KBa-Jp-8cd"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="ppn-qu-VdZ" id="Bn4-t7-ylT"/>
                         <outlet property="email_tf" destination="I9F-WB-Ztb" id="cVl-iz-pK1"/>
                         <outlet property="password_tf" destination="WkD-az-w9q" id="dkz-kL-6Kt"/>
                         <segue destination="ufK-eg-KUn" kind="show" identifier="toMain" id="kRK-5b-2Ei"/>
@@ -113,13 +119,13 @@
                                     <constraint firstAttribute="height" constant="150" id="1mN-yd-Z3t"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mixtape App!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzL-JC-cTJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mixtape App!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzL-JC-cTJ">
                                 <rect key="frame" x="20" y="309" width="374" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Mixtaper Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uww-nS-VSP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Mixtaper Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uww-nS-VSP">
                                 <rect key="frame" x="20" y="385" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -149,28 +155,31 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lsy-f5-NoN">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YDz-Xz-diJ">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" textContentType="family-name"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Z4N-lF-UNh">
                                         <rect key="frame" x="0.0" y="44" width="374" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KiK-CQ-YIO">
                                         <rect key="frame" x="0.0" y="88" width="374" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cxo-dK-EWQ">
+                                <rect key="frame" x="188.5" y="604" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Izc-Gd-d7w"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -190,12 +199,15 @@
                             <constraint firstItem="kzL-JC-cTJ" firstAttribute="top" secondItem="ev2-5a-iu2" secondAttribute="bottom" constant="35" id="hDY-n8-ikd"/>
                             <constraint firstItem="Izc-Gd-d7w" firstAttribute="trailing" secondItem="uww-nS-VSP" secondAttribute="trailing" constant="20" id="nme-Yy-sTn"/>
                             <constraint firstItem="kzL-JC-cTJ" firstAttribute="leading" secondItem="Izc-Gd-d7w" secondAttribute="leading" constant="20" id="phb-Q8-wXX"/>
+                            <constraint firstItem="cxo-dK-EWQ" firstAttribute="centerX" secondItem="Sfu-MI-m6d" secondAttribute="centerX" id="qGv-JX-bnJ"/>
                             <constraint firstItem="uww-nS-VSP" firstAttribute="top" secondItem="kzL-JC-cTJ" secondAttribute="bottom" constant="40" id="tEz-Md-S5E"/>
+                            <constraint firstItem="fgw-Hx-vvg" firstAttribute="top" secondItem="cxo-dK-EWQ" secondAttribute="bottom" constant="20" id="tUx-YG-e5d"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UVV-CV-6YD"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="cxo-dK-EWQ" id="c9L-or-mn8"/>
                         <outlet property="email_tf" destination="Z4N-lF-UNh" id="acI-6n-VpV"/>
                         <outlet property="firstname_tf" destination="lsy-f5-NoN" id="8mc-zc-mqb"/>
                         <outlet property="lastname_tf" destination="YDz-Xz-diJ" id="f2u-j1-LyI"/>

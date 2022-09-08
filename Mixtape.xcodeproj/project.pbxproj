@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC2D3E3F28BD18F2000412E4 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2D3E3E28BD18F2000412E4 /* AppFont.swift */; };
+		BC2D3E4428BD1B8D000412E4 /* quicksand-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC2D3E4028BD1B8D000412E4 /* quicksand-regular.ttf */; };
+		BC2D3E4628BD1B8D000412E4 /* quicksand-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC2D3E4228BD1B8D000412E4 /* quicksand-bold.ttf */; };
+		BC2D3E4728BD1B8D000412E4 /* quicksand-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC2D3E4328BD1B8D000412E4 /* quicksand-light.ttf */; };
+		BC2D3E4928BD1EA4000412E4 /* AppCustomViewAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2D3E4828BD1EA4000412E4 /* AppCustomViewAttributes.swift */; };
 		BC456CFB28AAD9640061CBD7 /* SongDao+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC456CFA28AAD9640061CBD7 /* SongDao+CoreDataClass.swift */; };
 		BC456CFD28AAD9770061CBD7 /* SongDao+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC456CFC28AAD9770061CBD7 /* SongDao+CoreDataProperties.swift */; };
-		BC60EFD928AAC02E00DD35DB /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60EFD828AAC02E00DD35DB /* SongsTableViewController.swift */; };
+		BC60EFD928AAC02E00DD35DB /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60EFD828AAC02E00DD35DB /* FeedViewController.swift */; };
 		BC60EFDC28AAC09500DD35DB /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60EFDB28AAC09500DD35DB /* Song.swift */; };
 		BC60EFE528AAC55400DD35DB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60EFE428AAC55400DD35DB /* Model.swift */; };
 		BC60EFE728AAC59000DD35DB /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60EFE628AAC59000DD35DB /* ModelFirebase.swift */; };
@@ -19,6 +24,12 @@
 		BC65D68228AA995400DCECA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC65D68128AA995400DCECA1 /* SceneDelegate.swift */; };
 		BC65D68C28AA995900DCECA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC65D68B28AA995900DCECA1 /* Assets.xcassets */; };
 		BC65D68F28AA995900DCECA1 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC65D68D28AA995900DCECA1 /* Intro.storyboard */; };
+		BC70A17D28C394CE008A9505 /* CustomNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70A17C28C394CE008A9505 /* CustomNavigationItem.swift */; };
+		BC70A18528C3D0CF008A9505 /* SpotifyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70A18428C3D0CF008A9505 /* SpotifyApi.swift */; };
+		BC70A18D28C4BE23008A9505 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC70A18C28C4BE23008A9505 /* Alamofire */; };
+		BC70A19028C4E93F008A9505 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = BC70A18F28C4E93F008A9505 /* SwiftyJSON */; };
+		BC70A19228C61D1B008A9505 /* MixtapeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70A19128C61D1B008A9505 /* MixtapeDetailsViewController.swift */; };
+		BC70A19428C6713F008A9505 /* MixtapeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70A19328C6713F008A9505 /* MixtapeTableViewCell.swift */; };
 		BCA642AB28B29638003F1F25 /* SongItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA642AA28B29638003F1F25 /* SongItem.swift */; };
 		BCA642AD28B29644003F1F25 /* MixtapeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA642AC28B29644003F1F25 /* MixtapeItem.swift */; };
 		BCA642B028B3977D003F1F25 /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = BCA642AF28B3977D003F1F25 /* SwiftyGif */; };
@@ -53,10 +64,9 @@
 		BCA8986D28BC040F000BCC28 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BCA8986C28BC040F000BCC28 /* FirebaseStorage */; };
 		BCA8986F28BC040F000BCC28 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BCA8986E28BC040F000BCC28 /* FirebaseStorageCombine-Community */; };
 		BCA8987128BC0D20000BCC28 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA8987028BC0D20000BCC28 /* SongTableViewCell.swift */; };
-		BCA8987328BCB18D000BCC28 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA8987228BCB18D000BCC28 /* MainViewController.swift */; };
 		BCD0AF1B28AC17C400AC7337 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BCD0AF1A28AC17C400AC7337 /* Kingfisher */; };
 		BCDA965528B6ED970016A889 /* SongAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDA965428B6ED970016A889 /* SongAddEditViewController.swift */; };
-		BCDA965728B6F32C0016A889 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDA965628B6F32C0016A889 /* UserViewController.swift */; };
+		BCDA965728B6F32C0016A889 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDA965628B6F32C0016A889 /* ProfileViewController.swift */; };
 		BCDEAFC128AC0032002DED19 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEAFC028AC0032002DED19 /* NotificationCenter.swift */; };
 		BCE6E73228AE8F7F00327FC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCE6E73128AE8F7F00327FC5 /* GoogleService-Info.plist */; };
 		BCE6E73828AFEC1E00327FC5 /* Mixtape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6E73728AFEC1E00327FC5 /* Mixtape.swift */; };
@@ -66,21 +76,22 @@
 		BCE6E74128AFEF0E00327FC5 /* UserDao+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6E73D28AFEF0E00327FC5 /* UserDao+CoreDataClass.swift */; };
 		BCE6E74228AFEF0E00327FC5 /* UserDao+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6E73E28AFEF0E00327FC5 /* UserDao+CoreDataProperties.swift */; };
 		BCECD81C28B39A6600389C63 /* storytime.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCECD81A28B39A6600389C63 /* storytime.ttf */; };
-		BCECD81D28B39A6600389C63 /* quicksand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCECD81B28B39A6600389C63 /* quicksand.ttf */; };
 		BCECD82328B3A41900389C63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCECD82128B3A41900389C63 /* Main.storyboard */; };
 		BCECD82528B3A43100389C63 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCECD82728B3A43100389C63 /* Login.storyboard */; };
 		BCECD83128B3A75200389C63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECD83028B3A75200389C63 /* LoginViewController.swift */; };
 		BCECD83628B3B13200389C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCECD83828B3B13200389C63 /* LaunchScreen.storyboard */; };
 		BCECD84128B3ED6700389C63 /* mixtape_loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = BCECD84028B3ED6600389C63 /* mixtape_loader.gif */; };
-		D19AE12E320182CE64C1C6DD /* Pods_Mixtape.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30BCFEA8AD47853E7B98044 /* Pods_Mixtape.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		73A77101DD76645C54643C2D /* Pods-Mixtape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mixtape.release.xcconfig"; path = "Target Support Files/Pods-Mixtape/Pods-Mixtape.release.xcconfig"; sourceTree = "<group>"; };
-		B30BCFEA8AD47853E7B98044 /* Pods_Mixtape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mixtape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC2D3E3E28BD18F2000412E4 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		BC2D3E4028BD1B8D000412E4 /* quicksand-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "quicksand-regular.ttf"; sourceTree = "<group>"; };
+		BC2D3E4228BD1B8D000412E4 /* quicksand-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "quicksand-bold.ttf"; sourceTree = "<group>"; };
+		BC2D3E4328BD1B8D000412E4 /* quicksand-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "quicksand-light.ttf"; sourceTree = "<group>"; };
+		BC2D3E4828BD1EA4000412E4 /* AppCustomViewAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCustomViewAttributes.swift; sourceTree = "<group>"; };
 		BC456CFA28AAD9640061CBD7 /* SongDao+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SongDao+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BC456CFC28AAD9770061CBD7 /* SongDao+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SongDao+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BC60EFD828AAC02E00DD35DB /* SongsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
+		BC60EFD828AAC02E00DD35DB /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BC60EFDB28AAC09500DD35DB /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		BC60EFE428AAC55400DD35DB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BC60EFE628AAC59000DD35DB /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
@@ -92,13 +103,16 @@
 		BC65D68B28AA995900DCECA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC65D68E28AA995900DCECA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
 		BC65D69028AA995900DCECA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC70A17C28C394CE008A9505 /* CustomNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItem.swift; sourceTree = "<group>"; };
+		BC70A18428C3D0CF008A9505 /* SpotifyApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyApi.swift; sourceTree = "<group>"; };
+		BC70A19128C61D1B008A9505 /* MixtapeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeDetailsViewController.swift; sourceTree = "<group>"; };
+		BC70A19328C6713F008A9505 /* MixtapeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeTableViewCell.swift; sourceTree = "<group>"; };
 		BCA642AA28B29638003F1F25 /* SongItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongItem.swift; sourceTree = "<group>"; };
 		BCA642AC28B29644003F1F25 /* MixtapeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeItem.swift; sourceTree = "<group>"; };
 		BCA642B128B397FD003F1F25 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		BCA8987028BC0D20000BCC28 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
-		BCA8987228BCB18D000BCC28 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BCDA965428B6ED970016A889 /* SongAddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongAddEditViewController.swift; sourceTree = "<group>"; };
-		BCDA965628B6F32C0016A889 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		BCDA965628B6F32C0016A889 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BCDEAFC028AC0032002DED19 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		BCE6E73128AE8F7F00327FC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BCE6E73728AFEC1E00327FC5 /* Mixtape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mixtape.swift; sourceTree = "<group>"; };
@@ -108,13 +122,11 @@
 		BCE6E73D28AFEF0E00327FC5 /* UserDao+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDao+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BCE6E73E28AFEF0E00327FC5 /* UserDao+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDao+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BCECD81A28B39A6600389C63 /* storytime.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = storytime.ttf; sourceTree = "<group>"; };
-		BCECD81B28B39A6600389C63 /* quicksand.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = quicksand.ttf; sourceTree = "<group>"; };
 		BCECD82428B3A42200389C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCECD82628B3A43100389C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		BCECD83028B3A75200389C63 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BCECD83728B3B13200389C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCECD84028B3ED6600389C63 /* mixtape_loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mixtape_loader.gif; sourceTree = "<group>"; };
-		EF5A82575C4D51ACCB5B1268 /* Pods-Mixtape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mixtape.debug.xcconfig"; path = "Target Support Files/Pods-Mixtape/Pods-Mixtape.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +149,7 @@
 				BCA8985328BC040F000BCC28 /* FirebaseFirestore in Frameworks */,
 				BCA8985928BC040F000BCC28 /* FirebaseFunctions in Frameworks */,
 				BCA8983528BBF370000BCC28 /* RSSelectionMenu in Frameworks */,
+				BC70A19028C4E93F008A9505 /* SwiftyJSON in Frameworks */,
 				BCA8983F28BC040F000BCC28 /* FirebaseAnalyticsSwift in Frameworks */,
 				BCA8983B28BC040F000BCC28 /* FirebaseAnalytics in Frameworks */,
 				BCA8983828BBF6AC000BCC28 /* iOSDropDown in Frameworks */,
@@ -147,46 +160,29 @@
 				BCA8985128BC040F000BCC28 /* FirebaseDynamicLinks in Frameworks */,
 				BCA8986D28BC040F000BCC28 /* FirebaseStorage in Frameworks */,
 				BCA8985D28BC040F000BCC28 /* FirebaseInAppMessaging-Beta in Frameworks */,
+				BC70A18D28C4BE23008A9505 /* Alamofire in Frameworks */,
 				BCA8986B28BC040F000BCC28 /* FirebaseRemoteConfigSwift in Frameworks */,
 				BCA8984528BC040F000BCC28 /* FirebaseAppDistribution-Beta in Frameworks */,
 				BCA8986F28BC040F000BCC28 /* FirebaseStorageCombine-Community in Frameworks */,
 				BCA8984328BC040F000BCC28 /* FirebaseAppCheck in Frameworks */,
 				BCA8984D28BC040F000BCC28 /* FirebaseDatabase in Frameworks */,
 				BCA8984128BC040F000BCC28 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				D19AE12E320182CE64C1C6DD /* Pods_Mixtape.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35B909976CD599AE6B6C5B15 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B30BCFEA8AD47853E7B98044 /* Pods_Mixtape.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9FF6FC154DE326DFD0FF37AE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EF5A82575C4D51ACCB5B1268 /* Pods-Mixtape.debug.xcconfig */,
-				73A77101DD76645C54643C2D /* Pods-Mixtape.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		BC60EFD528AABF6E00DD35DB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				BCECD83028B3A75200389C63 /* LoginViewController.swift */,
 				BC60EFE828AACA1700DD35DB /* SongDetailsViewController.swift */,
-				BC60EFD828AAC02E00DD35DB /* SongsTableViewController.swift */,
+				BC60EFD828AAC02E00DD35DB /* FeedViewController.swift */,
 				BCA642B128B397FD003F1F25 /* IntroViewController.swift */,
 				BCDA965428B6ED970016A889 /* SongAddEditViewController.swift */,
-				BCDA965628B6F32C0016A889 /* UserViewController.swift */,
-				BCA8987228BCB18D000BCC28 /* MainViewController.swift */,
+				BCDA965628B6F32C0016A889 /* ProfileViewController.swift */,
+				BC70A19128C61D1B008A9505 /* MixtapeDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -215,8 +211,6 @@
 		BC65D67328AA995400DCECA1 = {
 			isa = PBXGroup;
 			children = (
-				35B909976CD599AE6B6C5B15 /* Frameworks */,
-				9FF6FC154DE326DFD0FF37AE /* Pods */,
 				BC65D67E28AA995400DCECA1 /* Mixtape */,
 				BC65D67D28AA995400DCECA1 /* Products */,
 			);
@@ -235,15 +229,18 @@
 			children = (
 				BCE6E73128AE8F7F00327FC5 /* GoogleService-Info.plist */,
 				BC65D69028AA995900DCECA1 /* Info.plist */,
+				BC2D3E4828BD1EA4000412E4 /* AppCustomViewAttributes.swift */,
 				BC65D67F28AA995400DCECA1 /* AppDelegate.swift */,
 				BC65D68128AA995400DCECA1 /* SceneDelegate.swift */,
-				BC65D68B28AA995900DCECA1 /* Assets.xcassets */,
+				BC2D3E3E28BD18F2000412E4 /* AppFont.swift */,
 				BC60EFEC28AAD61200DD35DB /* DataModel.xcdatamodeld */,
 				BC65D68D28AA995900DCECA1 /* Intro.storyboard */,
 				BCECD82728B3A43100389C63 /* Login.storyboard */,
 				BCECD82128B3A41900389C63 /* Main.storyboard */,
 				BCECD83828B3B13200389C63 /* LaunchScreen.storyboard */,
-				BCECD81928B39A6600389C63 /* ExternalAssets */,
+				BC65D68B28AA995900DCECA1 /* Assets.xcassets */,
+				BCECD81928B39A6600389C63 /* Assets */,
+				BC70A18328C3D0A8008A9505 /* API */,
 				BC60EFDA28AAC07F00DD35DB /* Model */,
 				BC60EFD528AABF6E00DD35DB /* ViewControllers */,
 				BCECD83F28B3B9BB00389C63 /* Views */,
@@ -251,20 +248,32 @@
 			path = Mixtape;
 			sourceTree = "<group>";
 		};
-		BCECD81928B39A6600389C63 /* ExternalAssets */ = {
+		BC70A18328C3D0A8008A9505 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				BC70A18428C3D0CF008A9505 /* SpotifyApi.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		BCECD81928B39A6600389C63 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BC2D3E4228BD1B8D000412E4 /* quicksand-bold.ttf */,
+				BC2D3E4328BD1B8D000412E4 /* quicksand-light.ttf */,
+				BC2D3E4028BD1B8D000412E4 /* quicksand-regular.ttf */,
 				BCECD84028B3ED6600389C63 /* mixtape_loader.gif */,
 				BCECD81A28B39A6600389C63 /* storytime.ttf */,
-				BCECD81B28B39A6600389C63 /* quicksand.ttf */,
 			);
-			path = ExternalAssets;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		BCECD83F28B3B9BB00389C63 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				BCA8987028BC0D20000BCC28 /* SongTableViewCell.swift */,
+				BC70A17C28C394CE008A9505 /* CustomNavigationItem.swift */,
+				BC70A19328C6713F008A9505 /* MixtapeTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,11 +285,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC65D69328AA995900DCECA1 /* Build configuration list for PBXNativeTarget "Mixtape" */;
 			buildPhases = (
-				D4ABCE6363B06AD5912892E6 /* [CP] Check Pods Manifest.lock */,
 				BC65D67828AA995400DCECA1 /* Sources */,
 				BC65D67928AA995400DCECA1 /* Frameworks */,
 				BC65D67A28AA995400DCECA1 /* Resources */,
-				996ADBFD30E72E0342EB81FE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -319,6 +326,8 @@
 				BCA8986A28BC040F000BCC28 /* FirebaseRemoteConfigSwift */,
 				BCA8986C28BC040F000BCC28 /* FirebaseStorage */,
 				BCA8986E28BC040F000BCC28 /* FirebaseStorageCombine-Community */,
+				BC70A18C28C4BE23008A9505 /* Alamofire */,
+				BC70A18F28C4E93F008A9505 /* SwiftyJSON */,
 			);
 			productName = Mixtape;
 			productReference = BC65D67C28AA995400DCECA1 /* Mixtape.app */;
@@ -354,6 +363,8 @@
 				BCA8983328BBF36F000BCC28 /* XCRemoteSwiftPackageReference "RSSelectionMenu" */,
 				BCA8983628BBF6AB000BCC28 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
 				BCA8983928BC040F000BCC28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BC70A18B28C4BE22008A9505 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				BC70A18E28C4E93E008A9505 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = BC65D67D28AA995400DCECA1 /* Products */;
 			projectDirPath = "";
@@ -369,13 +380,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2D3E4428BD1B8D000412E4 /* quicksand-regular.ttf in Resources */,
 				BCECD82328B3A41900389C63 /* Main.storyboard in Resources */,
+				BC2D3E4628BD1B8D000412E4 /* quicksand-bold.ttf in Resources */,
 				BCECD83628B3B13200389C63 /* LaunchScreen.storyboard in Resources */,
 				BC65D68F28AA995900DCECA1 /* Intro.storyboard in Resources */,
 				BCE6E73228AE8F7F00327FC5 /* GoogleService-Info.plist in Resources */,
 				BCECD82528B3A43100389C63 /* Login.storyboard in Resources */,
+				BC2D3E4728BD1B8D000412E4 /* quicksand-light.ttf in Resources */,
 				BC65D68C28AA995900DCECA1 /* Assets.xcassets in Resources */,
-				BCECD81D28B39A6600389C63 /* quicksand.ttf in Resources */,
 				BCECD81C28B39A6600389C63 /* storytime.ttf in Resources */,
 				BCECD84128B3ED6700389C63 /* mixtape_loader.gif in Resources */,
 			);
@@ -383,75 +396,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		996ADBFD30E72E0342EB81FE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Mixtape/Pods-Mixtape-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Mixtape/Pods-Mixtape-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mixtape/Pods-Mixtape-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D4ABCE6363B06AD5912892E6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Mixtape-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		BC65D67828AA995400DCECA1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BC60EFDC28AAC09500DD35DB /* Song.swift in Sources */,
-				BC60EFD928AAC02E00DD35DB /* SongsTableViewController.swift in Sources */,
+				BC60EFD928AAC02E00DD35DB /* FeedViewController.swift in Sources */,
 				BC456CFD28AAD9770061CBD7 /* SongDao+CoreDataProperties.swift in Sources */,
 				BCECD83128B3A75200389C63 /* LoginViewController.swift in Sources */,
 				BCE6E74128AFEF0E00327FC5 /* UserDao+CoreDataClass.swift in Sources */,
 				BC60EFE528AAC55400DD35DB /* Model.swift in Sources */,
+				BC2D3E4928BD1EA4000412E4 /* AppCustomViewAttributes.swift in Sources */,
 				BC60EFE728AAC59000DD35DB /* ModelFirebase.swift in Sources */,
 				BCE6E73A28AFEC2900327FC5 /* User.swift in Sources */,
+				BC70A17D28C394CE008A9505 /* CustomNavigationItem.swift in Sources */,
 				BCA642AB28B29638003F1F25 /* SongItem.swift in Sources */,
 				BCA642B228B397FD003F1F25 /* IntroViewController.swift in Sources */,
 				BC456CFB28AAD9640061CBD7 /* SongDao+CoreDataClass.swift in Sources */,
 				BC65D68028AA995400DCECA1 /* AppDelegate.swift in Sources */,
 				BCDEAFC128AC0032002DED19 /* NotificationCenter.swift in Sources */,
 				BC60EFEE28AAD61200DD35DB /* DataModel.xcdatamodeld in Sources */,
-				BCA8987328BCB18D000BCC28 /* MainViewController.swift in Sources */,
+				BC70A19228C61D1B008A9505 /* MixtapeDetailsViewController.swift in Sources */,
 				BC60EFE928AACA1700DD35DB /* SongDetailsViewController.swift in Sources */,
 				BCA8987128BC0D20000BCC28 /* SongTableViewCell.swift in Sources */,
 				BCE6E73F28AFEF0E00327FC5 /* MixtapeDao+CoreDataClass.swift in Sources */,
 				BCA642AD28B29644003F1F25 /* MixtapeItem.swift in Sources */,
+				BC70A18528C3D0CF008A9505 /* SpotifyApi.swift in Sources */,
 				BCE6E74028AFEF0E00327FC5 /* MixtapeDao+CoreDataProperties.swift in Sources */,
 				BC65D68228AA995400DCECA1 /* SceneDelegate.swift in Sources */,
-				BCDA965728B6F32C0016A889 /* UserViewController.swift in Sources */,
+				BC2D3E3F28BD18F2000412E4 /* AppFont.swift in Sources */,
+				BCDA965728B6F32C0016A889 /* ProfileViewController.swift in Sources */,
+				BC70A19428C6713F008A9505 /* MixtapeTableViewCell.swift in Sources */,
 				BCE6E74228AFEF0E00327FC5 /* UserDao+CoreDataProperties.swift in Sources */,
 				BCE6E73828AFEC1E00327FC5 /* Mixtape.swift in Sources */,
 				BCDA965528B6ED970016A889 /* SongAddEditViewController.swift in Sources */,
@@ -614,7 +590,6 @@
 		};
 		BC65D69428AA995900DCECA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF5A82575C4D51ACCB5B1268 /* Pods-Mixtape.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -648,7 +623,6 @@
 		};
 		BC65D69528AA995900DCECA1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73A77101DD76645C54643C2D /* Pods-Mixtape.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -704,6 +678,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BC70A18B28C4BE22008A9505 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		BC70A18E28C4E93E008A9505 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		BCA642AE28B3977C003F1F25 /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kirualex/SwiftyGif.git";
@@ -747,6 +737,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BC70A18C28C4BE23008A9505 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC70A18B28C4BE22008A9505 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		BC70A18F28C4E93F008A9505 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC70A18E28C4E93E008A9505 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		BCA642AF28B3977D003F1F25 /* SwiftyGif */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BCA642AE28B3977C003F1F25 /* XCRemoteSwiftPackageReference "SwiftyGif" */;

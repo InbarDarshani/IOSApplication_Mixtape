@@ -8,6 +8,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password_tf: UITextField!
     @IBOutlet weak var firstname_tf: UITextField!
     @IBOutlet weak var lastname_tf: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Data holders
     var email = "" { didSet{ if(email_tf != nil){ email_tf.text = email } } }
@@ -26,14 +27,8 @@ class LoginViewController: UIViewController {
     
     //MARK: View Actions
     @IBAction func unwind(unwindSegue: UIStoryboardSegue){}
-    
-    @IBAction func signIn(_ sender: Any) {
-        //print("SignIn \(String(describing: email_tf.text)) and \(String(describing: password_tf.text))")
-        submit()
-    }
-    
+    @IBAction func signIn(_ sender: Any) { submit() }
     @IBAction func signUp(_ sender: Any) {
-        //print("SignUp \(String(describing: email_tf.text)) \(String(describing: password_tf.text))")
         newUser = true
         submit()
     }
@@ -67,15 +62,19 @@ class LoginViewController: UIViewController {
     
     //MARK: Internal functions
     func submit(){
+        activityIndicator.startAnimating()
         if validateInput(){
             Model.instance.signInsignUp(newUser: newUser, fullName: firstnameInput + " " + lastnameInput, email: emailInput, password: passwordInput){ user, error in
                 guard error == nil else{
+                    self.activityIndicator.stopAnimating()
                     self.alert.message = error
+                    self.present(self.alert, animated:true, completion:nil)
                     return
                 }
                 self.performSegue(withIdentifier: "toMain", sender: self)
             }
-        }else{
+        } else {
+            activityIndicator.stopAnimating()
             self.present(alert, animated:true, completion:nil)
         }
     }
