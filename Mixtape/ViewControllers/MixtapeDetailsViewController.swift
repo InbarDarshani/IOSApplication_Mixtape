@@ -1,6 +1,6 @@
 import UIKit
 
-//TODO: edit and delete buttons
+//TODO: add edit and delete buttons
 class MixtapeDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: View references

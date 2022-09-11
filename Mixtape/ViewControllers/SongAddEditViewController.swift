@@ -35,7 +35,11 @@ class SongAddEditViewController: UIViewController,  UIImagePickerControllerDeleg
     
     //MARK: View actions
     @IBAction func openGallery(_ sender: Any) { takePicture(source: .photoLibrary) }
-    @IBAction func openCamera(_ sender: Any) { takePicture(source: .camera) }
+    @IBAction func openCamera(_ sender: Any) {
+        alert.message = "ERROR - Source type 1 not available!"
+        self.present(alert, animated:true, completion:nil)
+        //TODO: fix takePicture(source: .camera)
+    }
     @IBAction func saveButtonClicked(_ sender: Any) { submit() }
     @IBAction func unwind(unwindSegue: UIStoryboardSegue){}
     @IBAction func loadFromSpotify(_ sender: Any) { loadImageFromSpotify() }
@@ -85,8 +89,7 @@ class SongAddEditViewController: UIViewController,  UIImagePickerControllerDeleg
     }
     
     func submit(){
-        //Disable user input option and start loading
-        self.view.isUserInteractionEnabled = false
+        //Start loading
         activityIndicator.startAnimating()
         //Get inputs
         inputSongName = song_name_tf.text!
@@ -108,21 +111,25 @@ class SongAddEditViewController: UIViewController,  UIImagePickerControllerDeleg
             return
         }
         
-        //Stop loading, show error alert and re-activate user input
+        //Stop loading and show error alert
         activityIndicator.stopAnimating()
         self.present(alert, animated:true, completion:nil)
-        self.view.isUserInteractionEnabled = true
     }
     
     func saveToDb(){
-        let song = Song(name: inputSongName, artist: inputArtist, caption: inputCaption, userId: currentUserId)
+        //Initial song object with input values and existing value
+        let song  = Song()
+        song.songId = isEdit ? songItem!.song.songId : ""
+        song.name = inputSongName
+        song.artist = inputArtist
+        song.caption = inputCaption
+        song.userId = currentUserId
+        //Copy image url if its editing mode and set mixtapeId if existing one was chosen
+        song.imageUrl = isEdit ? songItem!.song.imageUrl : ""
+        song.mixtapeId = !inputWithNewMixtape ? userMixtapes.first(where: { $0.name == inputMixtapeName })?.mixtapeId : ""
+        //Create new mixtape object with input values
         let newMixtape = Mixtape(name: inputMixtapeName, description: inputNewMixtapeDescription, userId: currentUserId)
-        //Set song id if its editing song mode
-        isEdit ? song.songId = songItem!.song.songId : nil
-        //Set mixtape id if its editing mode or existing mixtape was chosen
-        isEdit ? song.mixtapeId = songItem!.mixtape.mixtapeId : nil
-        !inputWithNewMixtape ? song.mixtapeId = userMixtapes.first(where: { $0.name == inputMixtapeName })?.mixtapeId : nil
-        
+               
         //Add\Update Song with image and new mixtape
         if inputWithNewImage && inputWithNewMixtape {
             isEdit ?
@@ -159,7 +166,6 @@ class SongAddEditViewController: UIViewController,  UIImagePickerControllerDeleg
     
     func clearView(){
         activityIndicator.stopAnimating()
-        self.view.isUserInteractionEnabled = true
         song_name_tf.text = ""
         song_artist_tf.text = ""
         song_caption_tf.text = ""
@@ -183,6 +189,9 @@ class SongAddEditViewController: UIViewController,  UIImagePickerControllerDeleg
         imagePicker.allowsEditing = true
         if (UIImagePickerController.isSourceTypeAvailable(source)) {
             self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            alert.message = "Source type is not available!"
+            self.present(alert, animated:true, completion:nil)
         }
     }
     

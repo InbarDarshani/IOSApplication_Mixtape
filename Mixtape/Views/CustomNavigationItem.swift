@@ -6,7 +6,7 @@ class CustomNavigationItem: UINavigationItem {
         super.awakeFromNib()
         //Add App brand to top bar in addition to default back button and page title
         let label = UILabel()
-        label.text =  "Mixtpe"
+        label.text =  "Mixtape"
         label.font = UIFont(name: "storytime", size: 30)
         label.textColor = UIColor(named: "white")
         self.leftBarButtonItem = UIBarButtonItem(customView: label)

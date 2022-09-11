@@ -74,7 +74,7 @@ class ModelFirebase{
     
     //MARK: -------------------------------------- DATA --------------------------------------
 
-#warning ("TODO:")
+    //TODO: real time update from firebase
     //https://firebase.google.com/docs/firestore/query-data/listen#swift
     //    func songsRealTimeUpdate() {
     //        db.collection(Song.COLLECTION_NAME)
